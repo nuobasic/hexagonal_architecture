@@ -23,10 +23,6 @@ export class PostUsersRepository implements PostUsersOutboundPort {
       throw new UnauthorizedException('중복 이메일');
     }
     const user = await this.usersRepository.save(params);
-    return user.map((users: User) => {
-      return {
-        email: users.email,
-      };
-    });
+    return user;
   }
 }
