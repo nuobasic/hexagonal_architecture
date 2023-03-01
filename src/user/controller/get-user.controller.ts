@@ -12,8 +12,8 @@ export class GetUserGontroller {
   ) {}
 
   @Get(':userId')
-  async getUser(@Param('userId') userId) {
-    console.log(userId);
-    return await this.getUserInboundPort.execute(userId);
+  async getUser(@Param() param) {
+    console.log(param);
+    return await this.getUserInboundPort.execute(param);
   }
 }

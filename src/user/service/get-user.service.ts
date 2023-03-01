@@ -4,12 +4,14 @@ import {
   GetUserInboundPortInputDto,
   GetUserInboundPortOutputtDto,
 } from '../inbound-port/get-user-inbound-port';
-import { GetUserOutboundPort } from '../outbound-port/get-user-outbound-port';
-import { GET_USERS_OUTBOUND_PORT } from '../outbound-port/get-users.outboubd-port';
+import {
+  GetUserOutboundPort,
+  GET_USER_OUTBOUND_PORT,
+} from '../outbound-port/get-user-outbound-port';
 
 export class GetUserService implements GetUserInboundPort {
   constructor(
-    @Inject(GET_USERS_OUTBOUND_PORT)
+    @Inject(GET_USER_OUTBOUND_PORT)
     private readonly getUserOutboundPort: GetUserOutboundPort,
   ) {}
 
