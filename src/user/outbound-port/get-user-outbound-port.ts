@@ -1,14 +1,14 @@
 import { Role } from '../../entities/user.role';
 
-export class GetUserOutboundPortInputDto {
+export type GetUserOutboundPortInputDto = {
   userId: number;
-}
+};
 
-export class GetUserOutboundPortOutputDto {
+export type GetUserOutboundPortOutputDto = {
   email: string;
   name: string;
   role: Role;
-}
+};
 
 export const GET_USER_OUTBOUND_PORT = ' GET_USER_OUTBOUND_PORT' as const;
 
