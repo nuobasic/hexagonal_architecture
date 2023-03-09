@@ -12,7 +12,7 @@ export class UpdateUserController {
     private readonly updateUserInboundPort: UpdateUserInboundPort,
   ) {}
 
-  @Put(':userID')
+  @Put(':userId')
   async updateUser(
     @Param() param,
     @Body() updateUserInboundPort: UpdateUserInboundPortInputDtoBody,

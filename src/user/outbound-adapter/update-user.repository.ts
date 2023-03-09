@@ -7,6 +7,7 @@ import {
   UpdateUserOutboundPortInputDtoParma,
   UpdateUserOutboundPortOutputDto,
 } from '../outbound-port/update-user.outbound.port';
+import * as bcrypt from 'bcrypt';
 
 export class UpdateUserRepository implements UpdateUserOutboundPort {
   constructor(
@@ -21,16 +22,15 @@ export class UpdateUserRepository implements UpdateUserOutboundPort {
     const updateUser = await this.updateUserRepository.findOne({
       where: { userId: params.userId },
     });
-    console.log('11111: ' + updateUser.userId);
+    const hashedPassword = await bcrypt.hash(Body.password, 12);
     let result;
     if (updateUser) {
-      console.log('111111111111111111111111111');
       result = await this.updateUserRepository
         .createQueryBuilder()
         .update(User)
         .set({
           name: Body.name,
-          password: Body.password,
+          password: (Body.password = hashedPassword),
         })
         .where('userId=:userId', { userId: params.userId })
         .execute();
