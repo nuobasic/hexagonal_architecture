@@ -37,7 +37,7 @@ describe('UpdateUserService Spec', () => {
     const body2 = {
       email: 'test@abc.com',
       name: 'apple',
-      password: '1234',
+      password: '123456',
       role: Role.USER,
     };
     const updateUserService = await new UpdateUserService(
@@ -46,5 +46,6 @@ describe('UpdateUserService Spec', () => {
     const res = await updateUserService.excute(user, body);
 
     await expect(res.name).toEqual('apple');
+    await expect(res.password).toEqual('123456');
   });
 });
