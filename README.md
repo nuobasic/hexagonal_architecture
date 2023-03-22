@@ -1,73 +1,65 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
+# Hexagonal_Architecture
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
-  
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+## 기술 스택
 
-## Description
+- Framework: `NestJS`
+- Database: `RDS - mysql`
+- ORM: `TypeORM`
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+# 요구사항 분석
 
-## Installation
+## 1. 유저 서비스
 
-```bash
-$ npm install
-```
+- 회원 가입을 합니다. 회원 가입 시 권한을 구분합니다.
+- 유저 전체를 조회합니다.
+- 단일 유저를 조회합니다.
+- 유저를 삭제 할 수 있습니다.
+- 내용을 변경 할 수 있습니다.
 
-## Running the app
+## API
 
-```bash
-# development
-$ npm run start
+- 회원 가입
 
-# watch mode
-$ npm run start:dev
+| Method | URL       | Request Body                                              | Response         |
+| ------ | --------- | --------------------------------------------------------- | ---------------- |
+| POST   | /api/user | email : emai<br>password : 암호화 패스워드<br>role : 권한 | statusCode : 201 |
 
-# production mode
-$ npm run start:prod
-```
+- 유저 전체 조회
 
-## Test
+| Method | URL         | Request Path | Response         |
+| ------ | ----------- | ------------ | ---------------- |
+| GET    | /api/users/ |              | statusCode : 200 |
 
-```bash
-# unit tests
-$ npm run test
+- 유저 개별 조회
 
-# e2e tests
-$ npm run test:e2e
+| Method | URL               | Request Path     | Response         |
+| ------ | ----------------- | ---------------- | ---------------- |
+| GET    | /api/user/:userId | userId : 유저 id | statusCode : 200 |
 
-# test coverage
-$ npm run test:cov
-```
+- 유저 삭제
 
-## Support
+| Method | URL               | Request Path     | Response         |
+| ------ | ----------------- | ---------------- | ---------------- |
+| DELETE | /api/user/:userId | userId : 유저 id | statusCode : 200 |
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+- 유저 수정
 
-## Stay in touch
+| Method | URL               | Request Path     | Response         |
+| ------ | ----------------- | ---------------- | ---------------- |
+| PUT    | /api/user/:userId | userId : 유저 id | statusCode : 200 |
 
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+# 테스트
 
-## License
+## Unit Test
 
-  Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+#### User Service
+
+- 유저 생성
+- 유저 전체 조회
+- 유저 단건 조회
+- 유저 삭제
+- 유저 정보 수정
+
+## 테스트 결과
+
+#### User Service
