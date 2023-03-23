@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { Global, Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { User } from '../entities/user.entities';
 import { DeleteUserController } from './controller/delete-user.controller';
@@ -38,6 +38,7 @@ import { GetUsersService } from './service/get-users.service';
 import { PostUserservice } from './service/post-users.service';
 import { UpdateUserService } from './service/update-user.service';
 
+@Global()
 @Module({
   imports: [TypeOrmModule.forFeature([User])],
   controllers: [
