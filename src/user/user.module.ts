@@ -1,5 +1,6 @@
 import { Global, Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
+
 import { User } from '../entities/user.entities';
 import { DeleteUserController } from './controller/delete-user.controller';
 import { GetUserGontroller } from './controller/get-user.controller';
