@@ -16,6 +16,7 @@ import { POST_USERS_INBOUND_PORT } from './inbound-port/post-users.inbound-port'
 import { UPDATE_USER_INBOUND_PORT } from './inbound-port/update-user-inbound.port';
 
 import { DeletUserepository } from './outbound-adapter/delete-user.repository';
+import { FindUserRepository } from './outbound-adapter/find-user.repository';
 import { GetUserRepository } from './outbound-adapter/get-user-repository';
 import { GetUsersRepository } from './outbound-adapter/get-users.repository';
 
@@ -23,6 +24,7 @@ import { PostUsersRepository } from './outbound-adapter/post-users.repository';
 import { UpdateUserRepository } from './outbound-adapter/update-user.repository';
 
 import { DELETE_USER_OUTBOUND_PORT } from './outbound-port/delete-user-outbound.port';
+import { FIND_USER_OUTBOUND_PORT } from './outbound-port/find-user-outbound-port';
 import { GET_USER_OUTBOUND_PORT } from './outbound-port/get-user-outbound-port';
 import { GET_USERS_OUTBOUND_PORT } from './outbound-port/get-users-outbound-port';
 
@@ -85,6 +87,16 @@ import { UpdateUserService } from './service/update-user.service';
     {
       provide: UPDATE_USER_OUTBOUND_PORT,
       useClass: UpdateUserRepository,
+    },
+    {
+      provide: FIND_USER_OUTBOUND_PORT,
+      useClass: FindUserRepository,
+    },
+  ],
+  exports: [
+    {
+      provide: FIND_USER_OUTBOUND_PORT,
+      useClass: FindUserRepository,
     },
   ],
 })
