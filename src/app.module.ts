@@ -6,6 +6,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { UserModule } from './user/user.module';
 import { User } from './entities/user.entities';
 import { AuthModule } from './auth/auth.module';
+import { Market } from './entities/market.entity';
 
 @Module({
   imports: [
@@ -21,7 +22,7 @@ import { AuthModule } from './auth/auth.module';
           password: configService.get('DB_PASSWORD'),
           database: configService.get('DB_DATABASE'),
           migrations: [__dirname + '/src/migrations/*.ts'],
-          entities: [User],
+          entities: [User, Market],
           autoLoadEntities: true,
           synchronize: true,
           logging: true,
