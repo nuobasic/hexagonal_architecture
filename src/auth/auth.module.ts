@@ -9,6 +9,7 @@ import { UserLoginService } from './service/user-login.service';
 
 import { FIND_USER_OUTBOUND_PORT } from '../user/outbound-port/find-user-outbound-port';
 import { FindUserRepository } from '../user/outbound-adapter/find-user.repository';
+import { JwtStrategy } from './strategy/jwt.strategy';
 
 @Module({
   imports: [
@@ -30,6 +31,7 @@ import { FindUserRepository } from '../user/outbound-adapter/find-user.repositor
       provide: FIND_USER_OUTBOUND_PORT,
       useClass: FindUserRepository,
     },
+    JwtStrategy,
   ],
 })
 export class AuthModule {}

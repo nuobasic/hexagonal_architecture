@@ -7,6 +7,7 @@ import { UserModule } from './user/user.module';
 import { User } from './entities/user.entities';
 import { AuthModule } from './auth/auth.module';
 import { Market } from './entities/market.entity';
+import { MarketModule } from './market/market.module';
 
 @Module({
   imports: [
@@ -32,6 +33,7 @@ import { Market } from './entities/market.entity';
     }),
     UserModule,
     AuthModule,
+    MarketModule,
   ],
   controllers: [AppController],
   providers: [AppService],
