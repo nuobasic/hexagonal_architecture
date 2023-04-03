@@ -4,6 +4,7 @@ export type PostMarketInboundPortInputDto = {
   marketName: string;
   phone: string;
   country: string;
+  user: User;
 };
 
 export type PostMarketInboundPortOutputDto = {

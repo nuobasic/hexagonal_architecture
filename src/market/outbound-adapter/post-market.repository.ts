@@ -20,6 +20,7 @@ export class PostMarketRepository implements PostMartketOutboundPort {
     market.marketName = params.marketName;
     market.country = params.country;
     market.phone = params.phone;
+    market.user = params.user;
 
     const saveMarket = await this.postMarketRepository.save(market);
     return saveMarket;
