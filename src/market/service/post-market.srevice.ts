@@ -20,7 +20,7 @@ export class PostmarketService implements PostMartketInboundPort {
   async excute(
     params: PostMarketInboundPortInputDto,
   ): Promise<PostMarketInboundPortOutputDto> {
-    if (!Role.SELLER) {
+    if (params.user.role === Role.USER) {
       throw new ForbiddenException('권한이 없습니다.');
     }
     return await this.postMarketOutboundPort.excute(params);

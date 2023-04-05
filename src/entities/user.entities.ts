@@ -22,5 +22,5 @@ export class User {
   static password: string | (() => string);
 
   @OneToMany(() => Market, (market) => market.user)
-  market: Market;
+  market?: Market;
 }
